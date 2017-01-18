@@ -14,3 +14,12 @@ Syntax fro creatinga  list
 trying again!
 
 ```
+Example of embedding URL:
+syntax:
+```
+[link fro TAIR] (http://www.arabidopsis.org/)
+
+```
+Implementation
+
+[link for TAIR] (http://www.arabidopsis.org/)
