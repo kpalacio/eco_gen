@@ -4,4 +4,12 @@
 Create a list
 * first      
 * second      
-* thrid      
+* thrid  
+
+Syntax fro creatinga  list
+```
+* item1      
+* item2   
+* item3   
+
+```
