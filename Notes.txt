@@ -1,0 +1,115 @@
+### 02-15-17
+in my script foler I have teh file tail.sam. I open this file with vim and I am able to see the flag  (number with information abiut mapping success and orientation and whether the read is left or right. We check teh number of teh flag online. link: sam flag decoder
+
+we are going ove the interpretation of teh sam file. In my case I have 09_5-08_H_0_bwaaln.sam If I go at the end of each line (I can o with $), I will find collumns with X0:i:U, XT:i:4, to get info about what thsi columns means , check the tutorial.
+We want unic read to match with teh reference genome. To subset fot them, we can use grep command, or countexpression_pe.py. "countxpression_PE.py"This is a python script comand. This pyton script do not like long names, that's why we need to change the names. 
+
+Now we will open the scripts of pyton. It is in data/scripts.
+In order to run the script you need to call python program. Check tutotial 
+This scripts create a library . It extract info for particular read in order to count how many read match. It conver the sam file in a table for a a single gene that it is a reference genome. 
+---
+we first remove the :: from the sam file we used sed -i "s/::/\_g" myfile.sam
+Then we copy the python script that is in data scripts and I paste it in my scripts:
+cp namefilethatIwanttocopy ~/scripts/
+ones teh scripts is in my script dolder, I will run teh python script:
+python ..... check tutorial.
+At the end. I will have  2 counts file:
+09_5-08_H_0_bwaaln_counts.txt #it contains teh table
+countstatssummary.txt #it contains statistic
+
+
+
+### 02-13-2017
+Tutorial RNA seq:
+$ /data/popgen/TransDecoder-3.0.1/TransDecoder.LongOrfs -t Trinity.fasta
+Melisa built a reference genome for the whole class. The tutorial show how she made it. This reference is from a single individual. 
+today we will map reads from individual samples to reference transcriptome
+ 
+We change the file bwaaln_kpl by putting our R1 file name. after saving it we run the file by:
+./nameof file and enter.... no space!
+ after this finish running, I should get a sam file  and two sai files
+.sam
+R1....sai
+R2....sai
+
+creat a sample of the .sam file:
+tail -n 100 nameoffile > nameofnewshortfile
+
+to kill aprocess: ctrl+C
+
+###02-8-2017
+Last monday I clean only one file, so today I start cleaning my second file. For this I run :
+to run fastaqc to check quality
+cd /data/project_data/fastq/
+then I run teh comand 
+fastqc 09_5-08_H_0_R2.fq.gz
+it produce a new html file
+09_5-08_H_0_R2_fastqc.html
+now i need to move it 
+
+After run the trimmm file and it is in clean. I need to run again teh fastqc
+on teh clean file that is in clean folder
+fastqc 09_5-08_H_0_R2.fq.gz_clean_unpaired.fa
+
+Now I should have an html file and this is teh one that I need to dowonload to my computer. For thsi I will use the program WinSCP. Select teh two html files and drag into my folder on my pc. This forder is in teh desktop_Eco_Gen
+Now if I go to my desktop, I can double click an open the file in teh inetrnet.
+
+To check:
+Adapter content, etc
+
+Now we want to do teh assembly. As an exercise, and because the assambly can be affected by different things, we want to do a little experiment asbout how teh assamble can be affected by differnet variables.
+For sure we want to use the pair.fa files
+We want to choose an individual and then comapre sick versus healthy. 
+we want to use melany files: user lchambel 
+teh assembly can be affected by: 
+the lenght of teh read, etc
+
+check tutorial  Trinity --
+you can run the trinity stats!!!
+Leaving now :11:34 am
+
+
+
+
+###02-5-2017
+path for directory:
+data, project_data, fastaq
+
+my file:
+09_5-08_H_0_R1.fq.gz
+09_5-08_H_0_R2.fq.gz
+individual
+date
+0 healthy, 5 super sich
+R1 right readd, R2 left read
+
+I need to clean, evaluate and clean again this sample!
+
+To look at the file. zip file
+zcat filename | head
+
+we want to see letters
+
+we want to clean teh file using fastqc
+change directory to scripts
+we passte a file into that folder trim_example and in that file we change the names of our files to clean.
+For cleaning we are using a java program that need some especifications, to do that we edit teh file trim... using vim
+
+after editing your trim_example file. you want to run your script
+for running we have 2 differnet was:
+1: ./filename
+2. basg filename
+
+let it run. you can open a new  terminal window and tpe top to see the progress
+
+this is teh info after running teh file
+Input Read Pairs: 14120990 Both Surviving: 11763574 (83.31%) Forward Only Surviving: 1762305 (12.48%) Reverse Only Surviving: 221527 (1.57%) Dropped: 373584 (2.65%)
+TrimmomaticPE: Completed successfully
+
+to run fastaqc to check quality
+cd /data/project_data/fastq/
+then I run teh comand 
+fastqc 09_5-08_H_0_R1.fq.gz
+it produce a new html file
+09_5-08_H_0_R1_fastqc.html
+now i need to move it 
