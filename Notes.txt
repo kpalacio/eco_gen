@@ -1,3 +1,16 @@
+### 02-22-2107 #missed class
+There is a R script in teh project data calss folder. We need to copy that file to our desktop folder. To do that, First I will open terminal (CYGWIN) an link into my desktop folder:
+
+ cd C:/Users/Kti/Desktop/eco_gen
+
+Once I am in my desktop folder from terminal I will run the followin comnd to copy the file:
+scp kpalacio@pbio381.uvm.edu:/data/project_data/DGE/* .
+
+Now, from my desktop folder I will run teh R script in R studio. I need to install fisrt the different libraries.
+
+
+
+
 ### 02-15-17
 in my script foler I have teh file tail.sam. I open this file with vim and I am able to see the flag  (number with information abiut mapping success and orientation and whether the read is left or right. We check teh number of teh flag online. link: sam flag decoder
 
